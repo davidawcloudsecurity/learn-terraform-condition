@@ -72,7 +72,7 @@ resource "aws_instance" "example-01" {
 # Check if instance exists
 data "aws_instances" "existing_instances" {
   filter {
-    name   = "vpc-id"
+    name   = "subnet-id"
     values = [var.instance_id]
   }
 }
