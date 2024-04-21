@@ -12,7 +12,7 @@ If you want to skip the instance creation, run Terraform apply without the varia
 variable "create_instance" {
   description = "Set to true to create an instance, false to skip"
   type        = bool
-  default     = false
+  default     = true
 }
 
 # Condition to create an EC2 instance
