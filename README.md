@@ -23,3 +23,7 @@ resource "aws_instance" "example" {
 }
 
 ```
+This will create the EC2 instance. If you want to skip the instance creation, run Terraform apply without the variable or with create_instance=false.
+```ruby
+terraform apply -var 'create_instance=true'
+```
