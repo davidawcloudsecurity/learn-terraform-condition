@@ -31,19 +31,14 @@ If you want to skip the instance creation, run Terraform apply without the varia
 variable "create_instance" {
   description = "Set to true to create an instance, false to skip"
   type        = bool
-  default     = true
+  default     = false
 }
 
 # Condition to create an EC2 instance
 resource "aws_instance" "example" {
   count = var.create_instance ? 1 : 0
   
-  ami           = "ami-0fe630eb857a6ec83"
-  instance_type = "t2.micro"
-  vpc_security_group_ids      = [var.your_existing_security_group] # Use the ID of the existing security group
-
-  # Associate the instance with the default VPC
-  subnet_id                   = var.your_existing_subnet_id
+  ami           = "ami-0fe630eb857a6ec83"  
 }
 
 //
@@ -59,6 +54,10 @@ resource "aws_instance" "example-01" {
   count         = var.create_instance-01 ? 1 : 0
   ami           = "ami-0fe630eb857a6ec83"
   instance_type = "t2.micro"
+  vpc_security_group_ids      = [var.your_existing_security_group] # Use the ID of the existing security group
+
+  # Associate the instance with the default VPC
+  subnet_id                   = var.your_existing_subnet_id
 }
 
 # Check if instance exists
