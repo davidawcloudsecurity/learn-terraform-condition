@@ -50,7 +50,8 @@ output "instance_id_exist" {
 
 #This will output a json value of the var.instance_id in data.aws_instances.existing_instances
 output "data_aws_instances_existing_instance_ids" {
-  value = data.aws_instances.existing_instances. # (e.g data.aws_instances.existing_instances.id = "us-east-1", data.aws_instances.existing_instances.ids = tolist(["i-0bacd75918bbeed04"]))
+  value = data.aws_instances.existing_instances # (e.g data.aws_instances.existing_instances.id = "us-east-1",
+data.aws_instances.existing_instances.ids = tolist(["i-0bacd75918bbeed04"]))
 }
 
 # Example of output
