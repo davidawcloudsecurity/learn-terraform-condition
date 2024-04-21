@@ -71,7 +71,7 @@ resource "aws_instance" "example-01" {
 
 # Check if instance exists
 data "aws_instances" "existing_instance" {
-  instance_ids = ["i-0bacd75918bbeed04"]
+  instance_id = var.instance_id
 }
 
 output "instance_id" {
