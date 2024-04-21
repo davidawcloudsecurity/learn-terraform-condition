@@ -77,11 +77,11 @@ data "aws_instances" "existing_instances" {
   }
 }
 
-output "instance_id" {
+output "instance_id_exists" {
   value = length(data.aws_instances.existing_instances.ids) > 0
 }
 
 #This will output a json value of the var.instance_id in data.aws_instances.existing_instances
 output "data_aws_instances_existing_instance_ids" {
-  value = data.aws_instances.existing_instances.ids[0]
+  value = data.aws_instances.existing_instances
 }
