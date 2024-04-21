@@ -72,12 +72,12 @@ resource "aws_instance" "example-01" {
 # Check if instance exists
 data "aws_instances" "existing_instances" {
   filter {
-    name   = "subnet-id"
+    name   = "instance-id" # (e.g instance-id, vpc-id, subnet-id)
     values = [var.instance_id]
   }
 }
 
-output "instance_id_exists" {
+output "object_id_exists" {
   value = length(data.aws_instances.existing_instances.ids) > 0
 }
 
