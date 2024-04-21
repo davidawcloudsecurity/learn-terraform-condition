@@ -53,6 +53,11 @@ variable "create_instance-01" {
   default     = false
 }
 
+variable "instance_id" {
+  description = "The ID of the instance to check"
+  type        = string
+}
+
 # Condition to create an EC2 instance
 resource "aws_instance" "example-01" {
   count         = var.create_instance-01 ? 1 : 0
@@ -68,6 +73,7 @@ resource "aws_instance" "example-01" {
 data "aws_instances" "existing_instance" {
   instance_tags = {
     Name = "your-instance-name"
+  instance_ids = [var.instance_id]
   }
 }
 
