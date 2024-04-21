@@ -1,6 +1,25 @@
 provider "aws" {
   region = "us-east-1"
 }
+
+variable "your_existing_vpc_id" {
+  description = "The vpc id the instance will be created (e.g., vpc-086340xxxxxxxxxxx)"
+  type        = string
+  default     = "vpc-086340a0c95fe4d4b"
+}
+
+variable "your_existing_subnet_id" {
+  description = "Specifies the main CIDR block."
+  type        = string
+  default     = "subnet-0d3db2de738b69acc"
+}
+
+variable "your_existing_security_group" {
+  description = "Specifies the exisiting security group"
+  type        = string
+  default     = "sg-0e7a8e0647f5e91e3"
+}
+
 /*
 Condition to control whether the EC2 instance should be created or not by 
 changing the value of the create_instance variable.
@@ -26,9 +45,10 @@ resource "aws_instance" "example" {
   
   ami           = "ami-0fe630eb857a6ec83"
   instance_type = "t2.micro"
+  vpc_security_group_ids      = [var.your_existing_security_group] # Use the ID of the existing security group
 
 # Associate the instance with the default VPC
-  subnet_id = var.create_instance ? aws_default_vpc.default.subnet_ids[0] : null
+  subnet_id                   = var.your_existing_subnet_id
 }
 
 //
