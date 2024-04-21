@@ -28,7 +28,7 @@ This will create the EC2 instance. If you want to skip the instance creation, ru
 terraform apply -var 'create_instance=true'
 ```
 
-How to filter base on instance id
+How to filter base on instance id (e.g. instance-id, vpc-id, subnet-id)
 ```ruby
 # Ask from user
 variable "instance_id" {
@@ -39,7 +39,7 @@ variable "instance_id" {
 # Check if instance exists
 data "aws_instances" "existing_instances" {
   filter {
-    name   = "instance-id" # (e.g instance-id, vpc-id, subnet-id)
+    name   = "instance-id"
     values = [var.instance_id]
   }
 }
