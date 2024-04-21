@@ -73,7 +73,7 @@ resource "aws_instance" "example-01" {
 data "aws_instances" "existing_instances" {
   filter {
     name   = "instance-id"
-    values = ["test"]
+    values = ["i-0bacd75918bbeed04"]
   }
 }
 
