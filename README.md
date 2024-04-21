@@ -80,3 +80,9 @@ data_aws_instances_existing_instance_ids = {
 }
 */
 ```
+cool way to play with variables
+```ruby
+output "vpc_subnet_exists" {
+  value = length(data.aws_instances.existing_vpc_subnet.id) > 0 ? "InstanceID-${aws_instance.example_linux_existing_policy.id}" : "VPC or subnet does not exist"
+}
+```
