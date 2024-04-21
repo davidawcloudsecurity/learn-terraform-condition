@@ -81,5 +81,5 @@ output "instance_id" {
   value = length(data.aws_instances.existing_instances.ids) > 0
 }
 output "data_aws_instances_existing_instance_ids" {
-  value = data.aws_instances.existing_instances.id
+  value = data.aws_instances.existing_instances
 }
