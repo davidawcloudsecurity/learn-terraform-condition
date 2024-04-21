@@ -83,5 +83,5 @@ output "instance_id" {
 
 #This will output a json value of the var.instance_id in data.aws_instances.existing_instances
 output "data_aws_instances_existing_instance_ids" {
-  value = data.aws_instances.existing_instances[0]
+  value = data.aws_instances.existing_instances.[0]
 }
