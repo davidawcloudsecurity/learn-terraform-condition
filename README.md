@@ -27,7 +27,7 @@ This will create the EC2 instance. If you want to skip the instance creation, ru
 ```ruby
 terraform apply -var 'create_instance=true'
 ```
-
+## https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/instance
 How to filter base on instance id (e.g. instance-id, vpc-id, subnet-id)
 ```ruby
 # Ask from user
