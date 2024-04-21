@@ -73,8 +73,8 @@ resource "aws_instance" "example-01" {
 data "aws_instances" "existing_instance" {
   instance_tags = {
     Name = "your-instance-name"
-  instance_ids = var.instance_id
   }
+  instance_ids = [var.instance_id]
 }
 
 output "instance_id" {
