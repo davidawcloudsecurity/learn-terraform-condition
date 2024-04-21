@@ -39,6 +39,10 @@ resource "aws_instance" "example" {
   count = var.create_instance ? 1 : 0
   ami           = "ami-0fe630eb857a6ec83"  
   instance_type = "t2.micro"
+  vpc_security_group_ids      = [var.your_existing_security_group] # Use the ID of the existing security group
+
+  # Associate the instance with the default VPC
+  subnet_id                   = var.your_existing_subnet_id
 }
 
 //
