@@ -71,9 +71,6 @@ resource "aws_instance" "example-01" {
 
 # Check if instance exists
 data "aws_instances" "existing_instance" {
-  instance_tags = {
-    Name = "your-instance-name"
-  }
   instance_ids = [var.instance_id]
 }
 
@@ -81,5 +78,5 @@ output "instance_id" {
   value = length(data.aws_instances.existing_instances.instances) > 0
 }
 output "data_aws_instances_existing_instance_ids" {
-  value = data.aws_instances.existing_instance.instance_tags
+  value = data.aws_instances.existing_instance.id
 }
