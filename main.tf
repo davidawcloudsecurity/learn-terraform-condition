@@ -72,7 +72,6 @@ resource "aws_instance" "example-01" {
 # Check if instance exists
 data "aws_instances" "existing_instances" {
   filter {
-    name   = var.instance_id
     values = ["test"]
   }
 }
