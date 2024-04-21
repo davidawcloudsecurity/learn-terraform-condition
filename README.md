@@ -39,19 +39,18 @@ variable "instance_id" {
 # Check if instance exists
 data "aws_instances" "existing_instances" {
   filter {
-    name   = "instance-id"
+    name   = "instance-id" # (e.g instance-id, vpc-id, subnet-id)
     values = [var.instance_id]
   }
 }
 
-output "instance_id" {
+output "instance_id_exist" {
   value = length(data.aws_instances.existing_instances.ids) > 0
 }
 
 #This will output a json value of the var.instance_id in data.aws_instances.existing_instances
 output "data_aws_instances_existing_instance_ids" {
-  value = data.aws_instances.existing_instances. # (e.g data.aws_instances.existing_instances.id = "us-east-1",  data.aws_instances.existing_instances.ids = tolist([
-  "i-0bacd75918bbeed04"
+  value = data.aws_instances.existing_instances. # (e.g data.aws_instances.existing_instances.id = "us-east-1", data.aws_instances.existing_instances.ids = tolist(["i-0bacd75918bbeed04"]))
 }
 
 # Example of output
