@@ -71,11 +71,14 @@ resource "aws_instance" "example-01" {
 
 # Check if instance exists
 data "aws_instances" "existing_instance" {
-  instance_id = var.instance_id
+  filter {
+    name   = var.instance_id
+    values = ["i-0bacd75918bbeed04"]
+  }
 }
 
 output "instance_id" {
-  value = length(data.aws_instances.existing_instances.instances) > 0
+  value = length(data.aws_instances.existing_instances.ids) > 0
 }
 output "data_aws_instances_existing_instance_ids" {
   value = data.aws_instances.existing_instance.id
