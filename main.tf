@@ -47,8 +47,8 @@ resource "aws_instance" "example" {
   instance_type = "t2.micro"
   vpc_security_group_ids      = [var.your_existing_security_group] # Use the ID of the existing security group
 
-# Associate the instance with the default VPC
-  subnet_id                   = var.your_existing_subnet_id
+  # Associate the instance with the default VPC
+  subnet_id = var.create_instance ? aws_default_vpc.default.subnet_ids[0] : null
 }
 
 //
