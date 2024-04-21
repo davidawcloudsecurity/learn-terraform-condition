@@ -80,6 +80,6 @@ data "aws_instances" "existing_instance" {
 output "instance_id" {
   value = length(data.aws_instances.existing_instance.ids) > 0 ? data.aws_instances.existing_instance.ids[1] : "Instance does not exist"
 }
-output "data.aws_instances.existing_instance.ids[1]" {
+output "data.aws_instances.existing_instance.ids" {
   value data.aws_instances.existing_instance.ids[1]
 }
