@@ -37,8 +37,8 @@ variable "create_instance" {
 # Condition to create an EC2 instance
 resource "aws_instance" "example" {
   count = var.create_instance ? 1 : 0
-  
   ami           = "ami-0fe630eb857a6ec83"  
+  instance_type = "t2.micro"
 }
 
 //
