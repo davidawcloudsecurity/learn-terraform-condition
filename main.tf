@@ -15,12 +15,20 @@ variable "create_instance" {
   default     = true
 }
 
+# Condition to create an AWS default VPC
+resource "aws_default_vpc" "default" {
+  count = var.create_instance ? 1 : 0
+}
+
 # Condition to create an EC2 instance
 resource "aws_instance" "example" {
   count = var.create_instance ? 1 : 0
   
   ami           = "ami-0fe630eb857a6ec83"
   instance_type = "t2.micro"
+
+# Associate the instance with the default VPC
+  subnet_id = var.create_instance ? aws_default_vpc.default.subnet_ids[0] : null
 }
 
 //
